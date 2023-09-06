@@ -53,7 +53,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                     height: 70,
                   ),
                   FieldTitle(title: 'Nome'),
-                  kFieldSpace,
+                  kTitleSpace,
                   const LogName(),
                   kFieldSpace,
                   FieldTitle(title: 'Email'),
@@ -74,7 +74,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
                       ElevatedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate() &
-                              formKeyPass.currentState!.validate()) {
+                              formKeyPass.currentState!.validate() &
+                              formKeyName.currentState!.validate() &
+                              formKeyCell.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Loading'),

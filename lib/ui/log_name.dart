@@ -10,6 +10,8 @@ class LogName extends StatefulWidget {
 }
 
 class _LogNameState extends State<LogName> {
+  RegExp regExp = RegExp(r'^[a-zA-Z]+( [a-zA-Z]+)+$');
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -31,6 +33,8 @@ class _LogNameState extends State<LogName> {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter some text';
+          } else if (!regExp.hasMatch(value)) {
+            return 'Please enter valid name';
           }
           return null;
         },

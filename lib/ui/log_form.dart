@@ -10,6 +10,8 @@ class LogForm extends StatefulWidget {
 }
 
 class _LogFormState extends State<LogForm> {
+  RegExp regExp = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,6 +34,8 @@ class _LogFormState extends State<LogForm> {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter some text';
+          } else if (!regExp.hasMatch(value)) {
+            return 'Please enter valid email';
           }
           return null;
         },

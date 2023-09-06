@@ -10,6 +10,8 @@ class LogPass extends StatefulWidget {
 }
 
 class _LogPassState extends State<LogPass> {
+  RegExp regExp = RegExp(
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$');
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,6 +34,8 @@ class _LogPassState extends State<LogPass> {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter some text';
+          } else if (!regExp.hasMatch(value)) {
+            return 'Please enter valid password';
           }
           return null;
         },

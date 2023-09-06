@@ -21,8 +21,8 @@ class _LogCellState extends State<LogCell> {
 
   void updateFormattedPhoneNumber(String text) {
     String formatted = text.replaceAllMapped(
-      RegExp(r'(\d{2})(\d{5})(\d{4})'),
-      (Match m) => "(${m[1]}) ${m[2]}-${m[3]}",
+      RegExp(r'(\d{2})(\d{1})(\d{4})(\d{4})'),
+      (Match m) => "(${m[1]}) ${m[2]} ${m[3]}-${m[4]}",
     );
 
     phoneNumberController.value = phoneNumberController.value.copyWith(
@@ -53,7 +53,7 @@ class _LogCellState extends State<LogCell> {
                 width: 2,
               ),
             ),
-            hintText: '(00) 00000-0000'),
+            hintText: '(00) 0 0000-0000'),
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter some text';
